@@ -7,10 +7,8 @@ const connectDB = require('./config/db');
 const authRoutes = require('./routes/authRoutes');
 const aiRoutes = require('./routes/aiRoutes');
 
-// Load environment variables
 dotenv.config();
 
-// Validate required environment variables
 const requiredEnvVars = ['MONGO_URI', 'JWT_SECRET', 'GROQ_API_KEY'];
 const missingEnvVars = requiredEnvVars.filter(envVar => !process.env[envVar]);
 
@@ -19,9 +17,7 @@ if (missingEnvVars.length > 0) {
     process.exit(1);
 }
 
-// Connect to MongoDB
 connectDB();
-
 
 const app = express();
 
@@ -33,24 +29,18 @@ app.use(cors({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-
 app.use('/api/auth', authRoutes);
 app.use('/api/ai', aiRoutes);
 
-// Absolute path to client build folder
-const __dirnamePath = path.resolve();
-const clientBuildPath = path.join(__dirnamePath, '..', 'client', 'dist');
-
-// Serve static files
-app.use(express.static(clientBuildPath));
-
-// For any route not starting with /api, send index.html
-app.get(/(.*)/, (req, res) => {
-    if (!req.path.startsWith('/api')) {
-        res.sendFile(path.join(clientBuildPath, 'index.html'));
-    }
-});
-
+if (process.env.NODE_ENV === 'production') {
+    const clientBuildPath = path.join(path.resolve(), '..', 'client', 'dist');
+    app.use(express.static(clientBuildPath));
+    app.get(/(.*)/, (req, res) => {
+        if (!req.path.startsWith('/api')) {
+            res.sendFile(path.join(clientBuildPath, 'index.html'));
+        }
+    });
+}
 
 app.use((err, req, res, next) => {
     console.error(err.stack);
