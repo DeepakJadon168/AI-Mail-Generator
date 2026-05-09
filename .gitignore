@@ -1,0 +1,25 @@
+# Dependencies
+node_modules/
+client/ai-mail-generator/node_modules/
+server/node_modules/
+
+# Environment variables - IMPORTANT
+.env
+server/.env
+client/.env
+client/ai-mail-generator/.env
+
+# Build files
+client/ai-mail-generator/dist/
+client/dist/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Vite
+client/ai-mail-generator/.vite/

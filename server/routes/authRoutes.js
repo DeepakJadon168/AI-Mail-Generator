@@ -1,0 +1,9 @@
+const express = require('express');
+const router = express.Router();
+const authController = require('../controllers/authController'); // ← yeh add karo
+
+router.post('/register', authController.registerUser);
+router.post('/verify-otp', authController.verifyOTP);
+router.post('/login', authController.loginUser);
+
+module.exports = router;
