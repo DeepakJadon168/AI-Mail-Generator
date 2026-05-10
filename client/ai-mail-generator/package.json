@@ -1,9 +1,11 @@
-{ 
-  
+{
   "name": "ai-mail-generator",
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "engines": {
+    "node": "20.x"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -13,7 +15,6 @@
   "dependencies": {
     "@heroicons/react": "^2.2.0",
     "axios": "^1.16.0",
-    "D": "^1.0.0",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
     "react-hot-toast": "^2.6.0",
