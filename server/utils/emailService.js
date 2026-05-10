@@ -39,21 +39,4 @@ const sendEmail = async (options) => {
 
 module.exports = sendEmail;
 
-        const mailOptions = {
-            from: process.env.EMAIL_USER,
-            to: options.email,
-            subject: options.subject,
-            text: options.message,
-            html: `<p>${options.message}</p>`,
-        };
-
-        const info = await transporter.sendMail(mailOptions);
-        console.log('Email sent:', info.response);
-        return { success: true, message: 'Email sent successfully', messageId: info.messageId };
-    } catch (error) {
-        console.error('Email sending error:', error.message);
-        throw new Error(`Failed to send email: ${error.message}`);
-    }
-};
-
-module.exports = sendEmail;
+      
