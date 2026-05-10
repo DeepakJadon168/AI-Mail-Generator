@@ -1,7 +1,5 @@
 { 
-  "engines": {
-    "node": "20.x"
-  },
+  
   "name": "ai-mail-generator",
   "private": true,
   "version": "0.0.0",
