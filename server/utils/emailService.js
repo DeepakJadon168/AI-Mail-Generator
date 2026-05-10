@@ -2,14 +2,6 @@ const nodemailer = require('nodemailer');
 
 const sendEmail = async (options) => {
     try {
-        if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
-            throw new Error('Email credentials not configured in environment variables');
-        }
-
-       const nodemailer = require('nodemailer');
-
-const sendEmail = async (options) => {
-    try {
         const transporter = nodemailer.createTransport({
             host: 'smtp-relay.brevo.com',
             port: 587,
@@ -38,5 +30,3 @@ const sendEmail = async (options) => {
 };
 
 module.exports = sendEmail;
-
-      
