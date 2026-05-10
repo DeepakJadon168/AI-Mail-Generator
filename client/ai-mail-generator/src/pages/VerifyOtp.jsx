@@ -11,7 +11,8 @@ const VerifyOtp = () => {
     const location = useLocation();
     const { login } = useAuth();
 
-    const { userId, email } = location.state || {};
+    const { userId, email, otp: receivedOtp } = location.state || {};
+    const [otp, setOtp] = useState(receivedOtp || '');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
